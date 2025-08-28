@@ -1,7 +1,7 @@
 // DEFINE UI VARS
 const form = document.querySelector('#task-form');
 const taskList = document.querySelector('.collection');
-const clearBtn = document.querySelector('clear-tasks');
+const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task'); 
 
@@ -16,6 +16,8 @@ function loadEventListeners( ){
   taskList.addEventListener('click', removeTask);
 //cler tasks event 
 clearBtn.addEventListener('click', clearTasks);
+//filter tasks event 
+filter.addEventListener('keyups', filterTasks);
 }
 
 //Add Task 
@@ -59,8 +61,13 @@ function removeTask(e) {
 }
 
 //clear  tasks 
-function clearTasks(){
-  taskLists.innerHTML='';
+function clearTasks() {
+  // taskList.innerHTML = '';
+
+  //faster
+  while(taskList.firstChild){
+    taskList.removeChild(taskList.firstChild)
+  }
 }
 
-
+//filter tasks 
